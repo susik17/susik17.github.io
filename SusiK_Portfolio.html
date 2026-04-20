@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Susi K — DevOps | SRE | Backend Engineer</title>
+<meta name="description" content="Portfolio of Susi K — DevOps, SRE, Backend Developer. 2026 Computer Science Graduate from GCE Tirunelveli."/>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2128;
+    --border: #30363d;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --accent3: #f78166;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --tag-bg: #1f2d3d;
+    --tag-text: #58a6ff;
+    --grad1: #58a6ff;
+    --grad2: #3fb950;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,17,23,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 2rem;}
+  .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .nav-logo{font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,var(--grad1),var(--grad2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .nav-links{display:flex;gap:1.8rem;list-style:none;}
+  .nav-links a{color:var(--muted);font-size:.9rem;transition:color .2s;}
+  .nav-links a:hover{color:var(--text);text-decoration:none;}
+
+  /* SECTIONS */
+  section{padding:80px 2rem;}
+  .container{max-width:1100px;margin:0 auto;}
+  .section-label{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;}
+  h2{font-size:1.9rem;font-weight:700;color:var(--text);margin-bottom:1.2rem;}
+  h3{font-size:1.1rem;font-weight:600;color:var(--text);}
+
+  /* HERO */
+  #hero{padding-top:120px;padding-bottom:80px;min-height:100vh;display:flex;align-items:center;}
+  .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:center;}
+  .hero-greeting{font-size:.95rem;color:var(--accent2);font-weight:500;margin-bottom:.5rem;}
+  .hero-name{font-size:3.2rem;font-weight:800;line-height:1.15;margin-bottom:.6rem;}
+  .hero-title{font-size:1.25rem;color:var(--muted);margin-bottom:1.4rem;}
+  .hero-title span{color:var(--accent);font-weight:600;}
+  .hero-desc{color:var(--muted);font-size:.97rem;max-width:540px;margin-bottom:2rem;line-height:1.75;}
+  .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.4rem;border-radius:6px;font-size:.9rem;font-weight:600;transition:all .2s;cursor:pointer;}
+  .btn-primary{background:var(--accent);color:#0d1117;}
+  .btn-primary:hover{background:#79b8ff;text-decoration:none;}
+  .btn-outline{border:1px solid var(--border);color:var(--text);background:transparent;}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+  .hero-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.8rem;position:relative;overflow:hidden;}
+  .hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--grad1),var(--grad2));}
+  .hero-avatar{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;color:#0d1117;margin-bottom:1rem;}
+  .hero-card h3{font-size:1rem;margin-bottom:.3rem;}
+  .hero-card .role{font-size:.82rem;color:var(--accent);margin-bottom:1rem;}
+  .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1rem;}
+  .stat{background:var(--surface2);border-radius:8px;padding:.6rem .8rem;text-align:center;}
+  .stat-val{font-size:1.3rem;font-weight:700;color:var(--accent2);}
+  .stat-key{font-size:.72rem;color:var(--muted);margin-top:.1rem;}
+  .status-dot{display:inline-block;width:8px;height:8px;background:var(--accent2);border-radius:50%;margin-right:.4rem;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+  /* SKILLS */
+  #skills{background:var(--surface);}
+  .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem;}
+  .skill-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.4rem;transition:border-color .2s;}
+  .skill-card:hover{border-color:var(--accent);}
+  .skill-cat{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;}
+  .tag-list{display:flex;flex-wrap:wrap;gap:.45rem;}
+  .tag{background:var(--tag-bg);color:var(--tag-text);font-size:.77rem;padding:.25rem .65rem;border-radius:4px;font-weight:500;}
+  .tag.green{background:#1a2d1f;color:var(--accent2);}
+  .tag.orange{background:#2d1f15;color:#ffa657;}
+  .tag.purple{background:#1f1a2d;color:#d2a8ff;}
+
+  /* EXPERIENCE */
+  .timeline{position:relative;padding-left:1.5rem;}
+  .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--border);}
+  .tl-item{position:relative;margin-bottom:2rem;}
+  .tl-dot{position:absolute;left:-1.94rem;top:.3rem;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg);}
+  .tl-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.3rem;}
+  .tl-role{font-weight:700;font-size:1rem;color:var(--text);}
+  .tl-company{color:var(--accent);font-weight:600;}
+  .tl-date{font-size:.8rem;color:var(--muted);background:var(--surface2);padding:.2rem .6rem;border-radius:4px;white-space:nowrap;}
+  .tl-bullets{list-style:none;padding:0;margin-top:.6rem;}
+  .tl-bullets li{font-size:.88rem;color:var(--muted);padding:.2rem 0 .2rem .9rem;position:relative;line-height:1.6;}
+  .tl-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent2);font-size:.8rem;}
+
+  /* PROJECTS */
+  .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.3rem;}
+  .proj-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.4rem;display:flex;flex-direction:column;transition:border-color .2s,transform .2s;}
+  .proj-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .proj-icon{font-size:1.6rem;margin-bottom:.8rem;}
+  .proj-card h3{font-size:.95rem;margin-bottom:.5rem;}
+  .proj-desc{font-size:.85rem;color:var(--muted);margin-bottom:1rem;flex:1;line-height:1.65;}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem;}
+  .proj-link{font-size:.82rem;color:var(--accent);font-weight:500;}
+
+  /* EDUCATION */
+  .edu-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.6rem;position:relative;overflow:hidden;}
+  .edu-card::after{content:'';position:absolute;top:0;left:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--grad1),var(--grad2));}
+  .cgpa{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--grad1),var(--grad2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .course-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem;}
+  .chip{background:var(--tag-bg);color:var(--muted);font-size:.75rem;padding:.2rem .6rem;border-radius:4px;}
+
+  /* CONTACT */
+  #contact{background:var(--surface);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
+  .contact-item{display:flex;align-items:center;gap:.8rem;padding:.9rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;margin-bottom:.8rem;transition:border-color .2s;}
+  .contact-item:hover{border-color:var(--accent);}
+  .contact-icon{font-size:1.2rem;width:36px;text-align:center;}
+  .contact-label{font-size:.75rem;color:var(--muted);}
+  .contact-val{font-size:.9rem;color:var(--text);font-weight:500;}
+
+  /* FOOTER */
+  footer{text-align:center;padding:2rem;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border);}
+
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    .hero-inner{grid-template-columns:1fr;gap:2rem;}
+    .hero-card{display:none;}
+    .contact-grid{grid-template-columns:1fr;}
+    .hero-name{font-size:2.2rem;}
+    .nav-links{gap:1rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">&lt;SusiK /&gt;</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="about" style="padding-top:100px;padding-bottom:80px;">
+  <div class="hero-inner" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:center;">
+    <div>
+      <div class="hero-greeting">👋 Hey there, I'm</div>
+      <div class="hero-name" style="font-size:3.2rem;font-weight:800;line-height:1.15;margin-bottom:.6rem;">Susi K</div>
+      <div class="hero-title" style="font-size:1.25rem;color:var(--muted);margin-bottom:1.4rem;">
+        <span>DevOps</span> · <span>SRE</span> · <span>Backend Developer</span>
+      </div>
+      <p class="hero-desc">
+        Computer Science Engineer (2026) with hands-on experience in CI/CD pipelines, Infrastructure as Code,
+        cloud platforms (AWS), system reliability, and backend API development. Passionate about building 
+        resilient, observable, and automated systems at scale.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact">Get In Touch</a>
+        <a class="btn btn-outline" href="https://github.com/susik17" target="_blank">⭐ GitHub</a>
+        <a class="btn btn-outline" href="https://linkedin.com/in/susik17" target="_blank">🔗 LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-avatar">SK</div>
+      <h3>Susi K</h3>
+      <div class="role"><span class="status-dot"></span>Open to Opportunities · 2026</div>
+      <div style="font-size:.82rem;color:var(--muted);line-height:1.6;">
+        📍 Trichy, Tamil Nadu, India<br/>
+        🎓 B.E. CSE · GCE Tirunelveli<br/>
+        🏆 Academic Topper 2025-26
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-val">8.86</div><div class="stat-key">CGPA / 10</div></div>
+        <div class="stat"><div class="stat-val">250+</div><div class="stat-key">DSA Problems</div></div>
+        <div class="stat"><div class="stat-val">3</div><div class="stat-key">Internships</div></div>
+        <div class="stat"><div class="stat-val">5+</div><div class="stat-key">Projects</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">What I work with</div>
+    <h2>Technical Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <div class="skill-cat">⚙️ DevOps & SRE</div>
+        <div class="tag-list">
+          <span class="tag">Jenkins CI/CD</span><span class="tag">Terraform</span>
+          <span class="tag">Ansible</span><span class="tag">GitOps</span>
+          <span class="tag">Docker</span><span class="tag">Docker Compose</span>
+          <span class="tag">Incident Response</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">☁️ Cloud — AWS</div>
+        <div class="tag-list">
+          <span class="tag green">EC2</span><span class="tag green">S3</span>
+          <span class="tag green">VPC</span><span class="tag green">IAM</span>
+          <span class="tag green">Lambda</span><span class="tag green">API Gateway</span>
+          <span class="tag green">CloudWatch</span><span class="tag green">Load Balancer</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">🖥️ Backend Development</div>
+        <div class="tag-list">
+          <span class="tag orange">Java</span><span class="tag orange">Spring Boot</span>
+          <span class="tag orange">Python</span><span class="tag orange">FastAPI</span>
+          <span class="tag orange">REST API</span><span class="tag orange">Microservices</span>
+          <span class="tag orange">Webhooks</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">🐧 Linux & Systems</div>
+        <div class="tag-list">
+          <span class="tag">Linux Internals</span><span class="tag">Bash Scripting</span>
+          <span class="tag">Process Monitoring</span><span class="tag">TCP/IP</span>
+          <span class="tag">HTTP/HTTPS</span><span class="tag">DNS</span>
+          <span class="tag">SSH</span><span class="tag">OAuth 2.0</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">🗄️ Databases</div>
+        <div class="tag-list">
+          <span class="tag purple">MySQL</span><span class="tag purple">PostgreSQL</span>
+          <span class="tag purple">SQLite</span><span class="tag purple">Schema Design</span>
+          <span class="tag purple">Query Optimization</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">🔧 Tools & Integrations</div>
+        <div class="tag-list">
+          <span class="tag">Git / GitHub</span><span class="tag">Postman</span>
+          <span class="tag">Twilio API</span><span class="tag">SMTP</span>
+          <span class="tag">C</span><span class="tag">VS Code</span>
+          <span class="tag">Eclipse</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Where I've worked</div>
+    <h2>Professional Experience</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-role">DevOps / SRE Intern</div>
+            <div class="tl-company">Zoho — Project Trainee</div>
+          </div>
+          <span class="tl-date">Feb 2026 – Apr 2026</span>
+        </div>
+        <ul class="tl-bullets">
+          <li>Analyzed Linux system internals: process lifecycle, CPU scheduling, memory management & system load patterns for SRE practices.</li>
+          <li>Designed and implemented end-to-end CI/CD pipelines using Jenkins to automate build, test, and deployment workflows.</li>
+          <li>Provisioned and managed AWS infrastructure (EC2, S3, VPC, IAM, Lambda, API Gateway, CloudWatch) using Terraform (IaC).</li>
+          <li>Automated configuration management and server provisioning across environments using Ansible playbooks.</li>
+          <li>Implemented OAuth 2.0 authentication, SSH key hardening, and MFA setup to strengthen security posture.</li>
+          <li>Monitored metrics, logs, and CloudWatch alerts to detect failures and improve service availability & reliability.</li>
+          <li>Simulated failure scenarios (downtime, API failures, network issues) to validate recovery and incident response strategies.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent2);"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-role">Backend Developer Intern</div>
+            <div class="tl-company">Mavepizon Technologies</div>
+          </div>
+          <span class="tl-date">Jul 2025 – Aug 2025</span>
+        </div>
+        <ul class="tl-bullets">
+          <li>Developed production-ready REST APIs with Java Spring Boot for a Toll Payment Processing System.</li>
+          <li>Implemented backend business logic, input validation, and structured error handling for data integrity.</li>
+          <li>Validated API reliability through systematic Postman testing covering edge cases and failure paths.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#ffa657;"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-role">AI / ML Intern</div>
+            <div class="tl-company">Adaovi Technologies</div>
+          </div>
+          <span class="tl-date">Dec 2023 – Feb 2024</span>
+        </div>
+        <ul class="tl-bullets">
+          <li>Built a diabetes prediction ML model in Python with preprocessing, feature engineering, and evaluation metrics.</li>
+          <li>Performed EDA and created visualizations using Matplotlib and Seaborn for data-driven insights.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--surface);">
+  <div class="container">
+    <div class="section-label">What I've built</div>
+    <h2>Key Projects</h2>
+    <div class="project-grid">
+      <div class="proj-card">
+        <div class="proj-icon">🏨</div>
+        <h3>Hostel Leave Approval System</h3>
+        <p class="proj-desc">Production-grade distributed workflow (Student → Parent → Warden) with WhatsApp (Twilio) + SMTP notifications, secure token-based approvals, webhook handling, retry logic, and Docker containerization.</p>
+        <div class="proj-tags">
+          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Twilio API</span>
+          <span class="tag green">Docker</span><span class="tag green">Webhooks</span><span class="tag green">CI/CD</span>
+        </div>
+        <a class="proj-link" href="https://github.com/susik17" target="_blank">View on GitHub →</a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">📊</div>
+        <h3>Linux System Monitoring Scripts</h3>
+        <p class="proj-desc">Bash shell scripts for continuous server monitoring of CPU, memory, and disk usage with threshold-based alerting (OK/WARNING/CRITICAL). Simulated production failures for SRE validation.</p>
+        <div class="proj-tags">
+          <span class="tag orange">Bash</span><span class="tag orange">Linux</span><span class="tag orange">SRE</span>
+          <span class="tag">Monitoring</span><span class="tag">Alerting</span>
+        </div>
+        <a class="proj-link" href="https://github.com/susik17" target="_blank">View on GitHub →</a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">🛣️</div>
+        <h3>Toll Payment Processing System</h3>
+        <p class="proj-desc">RESTful backend for toll booth management with Spring Boot and MySQL, handling vehicle registration, transactions, normalized schema design, and structured API responses.</p>
+        <div class="proj-tags">
+          <span class="tag orange">Spring Boot</span><span class="tag purple">MySQL</span>
+          <span class="tag">REST API</span><span class="tag">Postman</span>
+        </div>
+        <a class="proj-link" href="https://github.com/susik17" target="_blank">View on GitHub →</a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">🎮</div>
+        <h3>Tetris Game in Java Swing</h3>
+        <p class="proj-desc">Fully functional Tetris with Tetromino logic, rotations, collision detection, scoring, and event-driven rendering techniques using Java Swing.</p>
+        <div class="proj-tags">
+          <span class="tag orange">Java</span><span class="tag orange">Swing</span>
+          <span class="tag">OOP</span><span class="tag">Event-Driven</span>
+        </div>
+        <a class="proj-link" href="https://github.com/susik17" target="_blank">View on GitHub →</a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">🧠</div>
+        <h3>DSA Problem Solving Repository</h3>
+        <p class="proj-desc">250+ solved problems across arrays, strings, trees, graphs, DP, and greedy algorithms. Covers sliding window, BFS/DFS, recursion, backtracking with time/space complexity analysis.</p>
+        <div class="proj-tags">
+          <span class="tag">LeetCode</span><span class="tag orange">Java</span><span class="tag orange">Python</span>
+          <span class="tag">Algorithms</span><span class="tag">Data Structures</span>
+        </div>
+        <a class="proj-link" href="https://github.com/susik17" target="_blank">View on GitHub →</a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">🤖</div>
+        <h3>Diabetes Prediction ML Model</h3>
+        <p class="proj-desc">Machine learning model for diabetes prediction using Python. Includes data preprocessing, feature engineering, EDA, and evaluation metrics with Matplotlib/Seaborn visualizations.</p>
+        <div class="proj-tags">
+          <span class="tag orange">Python</span><span class="tag">sklearn</span>
+          <span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">EDA</span>
+        </div>
+        <a class="proj-link" href="https://github.com/susik17" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">Academic Background</div>
+    <h2>Education</h2>
+    <div class="edu-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;padding-left:1rem;">
+        <div>
+          <h3 style="font-size:1.2rem;margin-bottom:.3rem;">B.E. Computer Science Engineering</h3>
+          <div style="color:var(--accent);font-weight:600;margin-bottom:.3rem;">Government College of Engineering, Tirunelveli</div>
+          <div style="color:var(--muted);font-size:.85rem;">Nov 2022 – May 2026 &nbsp;·&nbsp; Tamil Nadu, India</div>
+          <div style="margin-top:.5rem;font-size:.85rem;color:var(--accent2);">🏆 Academic Topper 2025-26 — Top performer in CS Department</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="cgpa">8.86</div>
+          <div style="font-size:.8rem;color:var(--muted);">CGPA / 10</div>
+        </div>
+      </div>
+      <div class="course-chips" style="padding-left:1rem;">
+        <span class="chip">Data Structures & Algorithms</span>
+        <span class="chip">Operating Systems</span>
+        <span class="chip">Computer Networks</span>
+        <span class="chip">DBMS</span>
+        <span class="chip">Object-Oriented Programming</span>
+        <span class="chip">Distributed Systems</span>
+        <span class="chip">Cloud Computing</span>
+        <span class="chip">Linux Systems</span>
+        <span class="chip">Software Engineering</span>
+        <span class="chip">Design Patterns</span>
+        <span class="chip">Discrete Mathematics</span>
+        <span class="chip">Probability & Statistics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Let's connect</div>
+    <h2>Get In Touch</h2>
+    <p style="color:var(--muted);margin-bottom:2rem;max-width:500px;">I'm actively looking for SRE, DevOps, Backend Developer, or Graduate Engineer Trainee roles. Feel free to reach out!</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div><div class="contact-label">Email</div><div class="contact-val"><a href="mailto:susikumar0617@gmail.com">susikumar0617@gmail.com</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div><div class="contact-label">Phone</div><div class="contact-val">+91-9677376659</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><div class="contact-label">Location</div><div class="contact-val">Trichy, Tamil Nadu, India</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div><div class="contact-label">LinkedIn</div><div class="contact-val"><a href="https://linkedin.com/in/susik17" target="_blank">linkedin.com/in/susik17</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🐙</div>
+          <div><div class="contact-label">GitHub</div><div class="contact-val"><a href="https://github.com/susik17" target="_blank">github.com/susik17</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🎯</div>
+          <div><div class="contact-label">Target Roles</div><div class="contact-val">SRE · DevOps · Backend · GET</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with ❤️ by Susi K &nbsp;·&nbsp; 2026 CS Graduate &nbsp;·&nbsp; Open to Opportunities</p>
+  <p style="margin-top:.4rem;">DevOps · SRE · Backend Developer · Graduate Engineer Trainee</p>
+</footer>
+
+</body>
+</html>
